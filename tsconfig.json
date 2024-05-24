@@ -1,0 +1,19 @@
+{
+    "extends": "@tsconfig/node18/tsconfig.json",
+    "compilerOptions": {
+      "baseUrl": ".",
+      "resolveJsonModule": true,
+      "rootDir": "./src",
+    },
+    "exclude": [
+      "node_modules",
+      "**/node_modules",
+      "**/infra",
+      "**/test",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+      "**/jest.config.ts",
+      "**/__mocks__"
+    ]
+  }
+  
