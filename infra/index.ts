@@ -1,6 +1,6 @@
 import { App, Stack } from "aws-cdk-lib";
 import { EventHandler } from "./lambda";
-import { EventTable } from "./dynamodb";
+import { EventTable, SnapshotTable } from "./dynamodb";
 
 const app = new App();
 
@@ -13,8 +13,9 @@ class EventStack extends Stack {
     super(app, EventStack.name, { env });
 
     const eventTable = new EventTable(this);
+    const snapshotTable = new SnapshotTable(this);
 
-    new EventHandler(this, eventTable);
+    new EventHandler(this, eventTable, snapshotTable);
   }
 }
 

@@ -7,6 +7,10 @@ export interface Account {
   createdAt: string;
 }
 
+export interface AccountSnapshot extends Account {
+  version: number;
+}
+
 export type AccountEventName = "AccountCreated" | "AccountEmailUpdated";
 
 interface AccountEventBase<Name extends AccountEventName, Payload> {

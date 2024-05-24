@@ -5,16 +5,18 @@ import { Construct } from "constructs";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
 
 export class EventHandler extends NodejsFunction {
-  constructor(stack: Construct, eventTable: ITable) {
+  constructor(stack: Construct, eventTable: ITable, snapshotTable: ITable) {
     super(stack, EventHandler.name, {
       entry: join(__dirname, "..", "src", "event-handler.ts"),
       memorySize: 512,
       timeout: Duration.seconds(10),
       environment: {
         EVENT_TABLE: eventTable.tableName,
+        SNAPSHOT_TABLE: snapshotTable.tableName,
       },
     });
 
     eventTable.grantReadWriteData(this);
+    snapshotTable.grantReadWriteData(this);
   }
 }

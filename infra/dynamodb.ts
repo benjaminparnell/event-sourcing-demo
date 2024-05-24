@@ -16,3 +16,15 @@ export class EventTable extends Table {
     });
   }
 }
+
+export class SnapshotTable extends Table {
+  constructor(stack: Construct) {
+    super(stack, SnapshotTable.name, {
+      billingMode: BillingMode.PAY_PER_REQUEST,
+      partitionKey: {
+        name: "accountId",
+        type: AttributeType.STRING,
+      },
+    });
+  }
+}
