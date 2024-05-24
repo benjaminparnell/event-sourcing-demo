@@ -5,7 +5,6 @@ import { EventTable } from "./dynamodb";
 const app = new App();
 
 const env = {
-  account: "",
   region: "eu-west-2",
 };
 
